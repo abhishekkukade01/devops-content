@@ -1,0 +1,243 @@
+ 
+configuration command 
+   1> git config --global user.name "abhishek"
+   2> git config --global user.email "abhishek@gmail.com"
+   3> git config --global push.default "simple"
+_________________________________________________________________
+
+clone 
+   1> git clone <http://git......> <local_dir_name>
+   2> git clone <http://git.......>
+_________________________________________________________________
+git user workflow
+
+   1> git add .
+   2> git commit -m "text"
+   3> git status
+   4> git log 
+   5> git log -num
+   6> git log --oneline
+   7> git show <commit id>
+   8> git push 
+   9> git pull
+  10> git diff <file-name>
+  11> git diff -staged
+  12> git restore <file-name>
+__________________________________________________________________
+
+   git branches
+
+   list of all branches available 
+    - git branch
+   
+   list of branches in remote repository 
+    - git branch -a 
+   
+   create new branch 
+     - git branch <new branch>
+   
+   switch to pirtucular branch 
+     - git checkout <branch name>
+
+   show diff between branches
+      - git diff <branch1> <branch2>
+
+   merge two branch  -- by default git takes all missing commits from source and update the destination branch
+      - git merge <SourceBranch> <DestinationBranch>
+  
+  git cherry-pick is used to merge only specific commit ID from source to destination branch 
+      merge only pirticular commit 
+      - git cherry-pick <commit-id>
+
+ pull and push happen between same branch in repository 
+    when  git config --global push.default "simple"
+
+ _______________________________________________________________________________________________________________
+
+ stashing 
+ 
+stash will record untraked files 
+  
+ create stash - take backup and undo changes 
+  git stash  
+
+ list all available backup for repository
+  git stash list 
+
+ Apply specific stash from repository
+  git stash apply stash@{num}
+
+ Remove all stash from repository 
+  git stash clear
+
+
+____________________________________________________________________________________________________________________
+
+
+undo commited changes
+
+undoing changes doesnot happen just through file . git has 3 working area, the changes has to be reverted from all 3 areas
+
+undo changes from repository and move refrance of HEAD pointer
+ git reset <commit id> --soft
+
+undo changes from repository and staging area
+  git reset <comit id> --mixed
+
+undo changes from repo , staging area and working dir
+  git reset <commit id> --hard
+
+
+
+
+_________________________________________________________________________________________________________________________
+ 
+ Revert commited changes 
+   git revert <commit id>
+
+  git revert also undo the changes same as git reset but it maintain history. this prevent git from loosing history 
+  git take specific commit, and inverse the changes from that commit and create new inverse commit
+
+   this will undo commit id but will not delete commit id 
+
+__________________________________________________________________________________________________________________________
+
+Traverse older commit 
+if I want to go back to pirticular commit id and refer the changes then use 
+
+git checkout <comit_id>
+
+do the reqd changes and commit again
+
+___________________________________________________________________________________________________________________________  
+ 
+  git ignore 
+ 
+ commiting .gitignore to git repo as best practice 
+  
+  those file that we do not want to track (generally those files are generated runtime or during buiding project )
+ we put it in .gitignore 
+
+clean untracked files
+git clean 
+
+
+_____________________________________________________________________________________________________________________________
+
+Tags
+
+git has a option to tag a commitid in repo history so that you find it easier at a later point of time  
+
+a single commit id have multiple tag 
+Where a tagname cannot be attached to multiple commit 
+ 
+  create and apply tag 
+  git tag -a <pattern/tagname> -m 'comment' <commitid>
+
+
+  show content of tag 
+  git show <tagname>
+
+
+  list of available tag
+  git tag
+
+ git push --tag <tag name>
+
+  delete tag
+  git tag -d <tagname>
+  
+
+whenever we complete the work and git it to qa , so we get to know what ever qa it exactly taking 
+tag is specific for commit id 
+
+
+______________________________________________________________________________________________________________________________
+
+Rebase 
+
+shif the base from one commit id to another commit id 
+when we want to maintain history , dont got with rebase ,always go with merge 
+
+
+but if we want linear history ,and new changes go with rebase
+
+rebase reduce the commit id 
+
+rebase -less number of commit id 
+merge - higher number of commit id 
+
+git rebase <base>
+This automatically rebases the current branch onto ＜base＞, which can be any kind of commit reference
+
+_________________________________________________________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
