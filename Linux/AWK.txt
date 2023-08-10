@@ -1,1 +1,45 @@
-AWK
+
+
+AWK variable 
+
+1) FS -> FS ---> FS denote sepeartor in file , eg  csv. or normal or any symbol or space 
+2) NR -> Row Number. In  awk command NR is used to specify row number. 
+         with NR we use only relational operator 
+         NR==1, NR!=1 , NR < 1 , NR > 1 , NR <=1 , NR >=1 
+
+note : Never use ; in condition 
+
+
+
+___________________________________________________________________________________________
+
+Filter the data with given condition 
+
+1) print only line contining only "manager"
+awk '$2=="manager" {print $0}' myfile.txt
+
+2) print only rows greater than 2
+  awk 'NR >2 {print $0}' myfile.txt
+
+_____________________________________________________________________________________________
+
+
+ display record based on search string
+
+we have to specify the search string as  /string/
+
+example
+     
+     1) display record that contain "erk" string 
+         awk ' /erk/{print $0} ' myfile.txt
+
+     2) display record that contain sting "erk" in only second column 
+        awk ' $2~/erk/ {print $0}' myfile.txt
+
+______________________________________________________________________________________________
+
+filter data with manupulation
+
+1)print record where sarary greater that 25000 and add 5000 in it 
+
+   awk ' $4> 25000 { $4=$4+5000; print $0}' myfile.txt
