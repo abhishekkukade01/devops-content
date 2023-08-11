@@ -3,9 +3,11 @@
 AWK variable 
 
 1) FS -> FS ---> FS denote sepeartor in file , eg  csv. or normal or any symbol or space 
-2) NR -> Row Number. In  awk command NR is used to specify row number. 
+2) NR -> Number of Rows, Row Number. In  awk command NR is used to specify row number. 
          with NR we use only relational operator 
          NR==1, NR!=1 , NR < 1 , NR > 1 , NR <=1 , NR >=1 
+3) RS -> row seperator . a symbol or special character which separate row 
+4) NF  -> Number of Field/column
 
 note : Never use ; in condition 
 
@@ -43,3 +45,33 @@ filter data with manupulation
 1)print record where sarary greater that 25000 and add 5000 in it 
 
    awk ' $4> 25000 { $4=$4+5000; print $0}' myfile.txt
+___________________________________________________________________________________________________
+  awk variable example 
+  print the file as it is and below it print total number of rows and column 
+   
+    awk '{print $0} END { print "total number rows: " NR ; print " total number of column =" NF}' myfile.txt
+
+newfile.csv
+apple,banana,mango:cat,dog,cow:table,chair,bottol
+ print above file in table formate using RS and FS variable 
+
+awk '{print $0}' RS=":" FS="," newfile.csv 
+awk 'BEGIN{RS=":"} {print $0}' FS="," newfile.csv
+
+note: FS and -F plays same role in awk command , -F "," is used after awk and FS="," is used before file name 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
