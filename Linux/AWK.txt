@@ -60,7 +60,24 @@ awk 'BEGIN{RS=":"} {print $0}' FS="," newfile.csv
 
 note: FS and -F plays same role in awk command , -F "," is used after awk and FS="," is used before file name 
 
+__________________________________________________________________________________________________________________________________
 
+ awk if else 
+ 
+   in awk we can use if else block 
+   syntax : awk '{ if (){_______} else {________}  } ' myfile.txt
+
+ 1) if above table add one more column and if salary is grater that 25000  print blue else red
+    awk  '{ if ($4 > 25000) { print $0 "  blue" } else { print $0 "  red"} }' myfile.txt
+
+
+awk for loop 
+  syntax: 
+           awk ' BEGIN { for (i=0 ; i< 5; i++) {print " value of i is " i } } ' myfile.txt
+
+ echo " CAT DOG RAT LION TIGER " | awk ' {for (i=1; i <= NF; i++ ){ print i ":" $0}}'
+
+______________________________________________________________________________________________________________________________________
 
  
 
