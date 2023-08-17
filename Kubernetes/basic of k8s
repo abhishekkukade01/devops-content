@@ -1,0 +1,58 @@
+Basic kubernetes command
+DAY-1
+1. get all running pods
+   kubectl get pods
+
+2. run pod using docker image
+    kubectl run <podname> --image=<docker image>
+
+3. get information of running pod
+    kubectl describe pod <podname>
+
+4. delete pod 
+   kubectl delete pods <podname>
+
+5  pod yaml file - mypod.yml
+     apiVersion: v1
+     kind: Pod
+     metadata:
+       name: "mypod"
+     spec:
+       containers:
+        - name: "myc1"
+          image: "vimal13/apache-webserver-php "
+
+ kubectl apply -f  mypod.yml
+
+_______________________________________________________________________________________________
+DAY-2
+*Every time new pod come up , it will come up with new ip and new name (so ip is not fixed)
+  we give a fix identity to pod  by giving it "label"
+
+ Replication Controller
+
+       apiVersion: v1
+       kind: ReplicationController 
+       metadata:
+          name: "my-RC"
+       spec:
+          selector: 
+            app : web
+          replica: 3
+          template:
+              metadata:
+                 name: "my-pod"
+              label:
+                 app : web 
+              spec:
+                 containers:
+                      - name: "myc1"
+                        image: "-----"
+
+ 
+
+
+         
+
+
+
