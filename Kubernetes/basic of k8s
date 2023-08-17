@@ -42,13 +42,24 @@ DAY-2
           template:
               metadata:
                  name: "my-pod"
-              label:
-                 app : web 
+                 label:
+                    app : web 
               spec:
                  containers:
                       - name: "myc1"
                         image: "-----"
+1> apply rc
+    kubectl apply -f myrc.yml
 
+2> get list of replicaController
+   kubectl get rc
+
+3> scale up/down rc 
+   kubectl scale --replicas=4 myrc.yml
+
+4> delete rc
+   kubectl delete rc <rc_name>
+_________________________________________________________________________________________
  
 
 
