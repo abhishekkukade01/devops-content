@@ -1,3 +1,42 @@
+Awk 
+
+1. we can use awk command to search in file and print content in required formate
+2. awk provide most convinient way for file processing than other command
+
+structure of awk command 
+
+awk 'BEGIN{} {} END {}' filename
+Begin block execute before file processing 
+Action block execute for every line present in the file
+End block execute after completing all file processing.
+___________________________________________________________________________________________
+
+myfile.txt
+ajay manager account 45000
+sunil clerk account 25000
+varun manager sales 50000
+amit manager account 47000
+tarun peon sales 15000
+deepak clerk sales 23000
+sunil peon sales 13000
+satvik director purchase 80000 
+__________________________________________________________________________________________
+Note : Normal command like echo wont work in awk 
+      $0 for whole record or line
+       $1 for first column  
+       $2 for 2nd column 
+___________________________________________________________________________________________
+
+print first column in file
+awk '{print $0}' myfile.txt
+____________________________________________________________________________________________
+
+processing csv file
+
+
+
+awk command to print data and  total number of lines
+   awk 'BEGIN {c=0;} {print $0 ; c=c+1;} END {print "total number of lines=" c }' myfile.txt
 
 
 AWK variable 
@@ -74,7 +113,7 @@ ________________________________________________________________________________
 awk for loop 
   syntax: 
            awk ' BEGIN { for (i=0 ; i< 5; i++) {print " value of i is " i } } ' myfile.txt
-
+ 
  echo " CAT DOG RAT LION TIGER " | awk ' {for (i=1; i <= NF; i++ ){ print i ":" $0}}'
 
 ______________________________________________________________________________________________________________________________________
