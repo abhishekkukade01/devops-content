@@ -61,6 +61,45 @@ DAY-2
    kubectl delete rc <rc_name>
 _________________________________________________________________________________________
  
+DAY-3  Service
+
+1) cluster IP - internal service mostly used for microservices
+2) node port -  external service , external client can connect to pod through this service
+3) external  - we can uses external Load balancer from cloud as a service 
+
+ cluster IP
+
+apiVersion: v1
+kind: Service
+metadata:
+    name: "my-service"
+spec: 
+  selector:
+     app: web
+  ports:
+     - port: 8080
+       targetPort: 80
+____________________________________________________________________________________________
+
+nodePort 
+
+apiVersion: v1
+kind: Service
+
+metadata: 
+     name: myservice2
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 80
+      
+  selector:
+      app: web
+
+
+   
+
 
 
          
