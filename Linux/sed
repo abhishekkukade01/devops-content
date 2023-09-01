@@ -1,0 +1,75 @@
+sed - stream editor
+
+we use sed command to retrive the data and edit the data present in file
+we can also delete data from file
+we can perform operation like delete data where line containing "xyz"
+
+SED is a powerful text stream editor. Can do insertion, deletion, search and replace(substitution).
+SED command in unix supports regular expression which allows it perform complex pattern matching.
+
+
+demo.txt
+unix is great os. unix is opensource. unix is free os.
+learn operating system.
+unix linux which one you choose.
+unix is easy to learn.unix is a multiuser os.Learn unix .unix is a powerful.
+
+example 
+
+p -- print
+$ -- last 
+
+1) display specific line multiple time
+    sed '2p' demo.txt  -- print file with 2nd line 2 times
+
+2) display only  3rd line 
+   sed -n '3p' demo.txt
+
+3) display all line between 2 to 4
+   sed -n '2,4p' demo.txt
+
+4) display last line of file
+   sed -n '$p' demo.txt
+
+5) display all line expect specific line
+   sed -n '2!p' demo.txt
+
+6) display all file expect range 2,4
+   sed -n '2,4!p' demo.txt
+
+__________________________________________________________________________________________
+
+7) display line containing word learn
+   sed -n '/learn/p' demo.txt
+__________________________________________________________________________________________
+
+d -- delete
+
+
+
+1) delete 3rd line and display all file
+   sed '3d' demo.txt
+
+2) delete last line from file
+   sed '$d' demo.txt
+
+3) delete line between 2 and 4 from file
+   sed '2,4d' demo.txt
+
+4) delete all lines expect 3 rd line from file
+   sed '3!d' demo.txt  == same as print 3rd line
+
+ delete line permanently in the file
+
+1) delete 3rd line peranently from demo.txt 
+   sed-i '3d' demo.txt
+
+2) delete line between 2 to 4 
+   sed -i  '2,4d' demo.txt
+
+3) make file empty 
+   sed -i '1,$d' demo.txt
+
+4) delete 3 and 6 th line 
+   sed -i '3d' > '6d' demo.txt
+_______________________________________________________________________________________________
