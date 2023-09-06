@@ -134,9 +134,35 @@ day -4
 running wordpress mysql on k8s
 -learning env variable
 
+opening minikube container  port to host
+
+Even though, you are exposing port 30080 via NodePort in minikube, minikube will still not expose it
+because it will use its own external port to listen to this service.
+Minikube tunnels the service to expose to the outer world. To find out that exposed port:
+
+minikube service $SERVICE_NAME
+
+______________________________________________________________________________________________________________________________________________
+Running mysql db 
+
+kubectl run mydb --image=mysql:5.7 --env=MYSQL_ROOT_PASSWORD=redhat --env=MYSQL_DATABASE=wbdb --env=MYSQL_USER=vimal --env=MYSQL_PASSWORD=redhat
+
+kubectl logs mydb
+
+kubectl exec -it mydb -- bash
+
+mysql -u vimal -predhat
+__________________________________________________________________________________________________________________________________________
 
 
+running wordpress
 
+kubectl run mywp1 --image=wordpress:5.1.1-php7.3-apache
+
+kubectl expose pod mywp1 --type=NodePort --port=80
+
+minikube service mywp1
+___________________________________________________________________________________________________________________________________________________
 
    
 
