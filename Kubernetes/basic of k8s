@@ -166,7 +166,73 @@ ________________________________________________________________________________
 kubectl logs mydb
 check logs of pod mydb
 ______________________________________________________________________________________________________________________________________________
-   
+   day -5 
+running pod with env variable
+
+     apiVersion: v1
+     kind: Pod
+     metadata:
+       name: "mypod"
+     spec:
+       containers:
+        - name: "myc1"
+          image: "mysql:8.0-debian"
+          env:
+             - name: MYSQL_ROOT_PASSWORD
+               value: "root"
+             - name: MYSQL_ALLOW_EMPTY_PASSWORD
+               value: "yes"
+            - name: MYSQL_RANDOM_ROOT_PASSWORD
+               value: "yes"
+
+_________________________________________________________________________________________________________________________________________
+Running pod with env and using  secrets
+mysecret.yml 
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secret-sample
+data:
+  p: cm9vdA==
+______________________________________________________________________________________________________________________________________
+mypod.yml 
+
+     apiVersion: v1
+     kind: Pod
+     metadata:
+       name: "mypod"
+     spec:
+       containers:
+        - name: "myc1"
+          image: "mysql:8.0-debian"
+          env:
+             - name: MYSQL_ROOT_PASSWORD
+               valueFrom:
+                   secretKeyRef:
+                     name: secret-sample
+                     key: p 
+
+             - name: MYSQL_ALLOW_EMPTY_PASSWORD
+               value: "yes"
+
+             - name: MYSQL_RANDOM_ROOT_PASSWORD
+               value: "yes"
+
+
+______________________________________________________________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
