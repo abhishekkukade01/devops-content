@@ -221,6 +221,16 @@ mypod.yml
 
 
 ______________________________________________________________________________________________________________________________________
+Day-6 
+Deployment 
+
+kubectl create deployment myd --image=vimal13/apache-webserver-php:lwv1
+
+kubectl get deployment 
+
+kubectl scale deployment myd  --replicas=3
+
+kubectl set image deployment myd apache-webserver-php=vimal13/apache-webserver-php:lwv2
 
 
 
