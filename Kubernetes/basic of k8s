@@ -232,6 +232,33 @@ kubectl scale deployment myd  --replicas=3
 
 kubectl set image deployment myd apache-webserver-php=vimal13/apache-webserver-php:lwv2
 
+____________________________________________________________________________________________________________________
+
+deployment.yml 
+
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+   name: static-web-deploymnet 
+   namespace: sample
+spec:
+  replicas: 3
+  template:
+     metadata:
+       labels:
+            app: days-app
+     spec:
+       containers:
+       - name: days-app-container
+         image: vagdevik/my-first-app-image:1.1
+         ports:
+           - containerPort: 80
+  selector:
+     matchLabels:
+       app: days-app   
+
+___________________________________________________________________________________________________________________________________
+
 
 
 
