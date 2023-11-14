@@ -281,7 +281,26 @@ spec:
 
  go inside container create your files in data dir and other dir as well , kill container  " service nginx stop " and find your data in same location
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
+hostPath
 
+apiVersion: v1
+kind: Pod
+metadata:
+    name: pod-1
+spec: 
+   containers:
+        - name: c1
+          image: coolgourav147/nginx-custom
+          volumeMounts:
+                - name: my-volume
+                  mountPath: /data
+   volumes: 
+      - name: my-volume
+        hostPath:
+              path: /data
+
+this volume is created on node, so if pod is deletected , remain remain on host 
+----------------------------------------------------------------------------------------------------------------------------------------------- 
 
 
 
